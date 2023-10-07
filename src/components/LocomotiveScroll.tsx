@@ -7,8 +7,7 @@ export default function useLocoScroll(ref: React.RefObject<any>) {
       scroll = new locomotiveModule.default({
         el: ref.current,
         smooth: true,
-        lerp: 0.05,
-        multiplier: 0.9,
+        lerp: 0.07,
         scrollFromAnywhere: true,
         smartphone: { smooth: true, gestureDirection: "vertical" },
         tablet: { smooth: true, gestureDirection: "vertical",breakpoint:10 },

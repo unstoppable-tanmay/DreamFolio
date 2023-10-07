@@ -21,8 +21,6 @@ export default function Home() {
         exclusionBackgroundColor="#000"
         cursorInnerColor="#000"
         colorAnimationDuration={.5}
-        colorAnimationEase={"Power4.easeOut"}
-        sizeAnimationDuration={.9}
       />
       <div ref={scrollRef}>
         <HomeComp />

@@ -4,6 +4,7 @@ import TextDipserse from "./textdiperserhome/TextDisperse";
 import React, { useEffect, useState } from "react";
 import Cardcomp from "./3dcard/Cardcomp";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const projectdata = [
   {
@@ -73,17 +74,16 @@ const HomeComp = () => {
           initial={{ opacity: 0, gap: "100px" }}
           viewport={{ once: true, margin: "-35%" }}
           transition={{
-            delay: 0.2,
             duration: 1.1,
             bounce: 0.5,
           }}
           className="text-[20vh] md:text-[27vw] lg:text-[58vh] text-white text-opacity-5 font-black absolute pointer-events-none flex items-center justify-center flex-col md:flex-row leading-none"
         >
-          <span>A</span>
-          <span>B</span>
-          <span>O</span>
-          <span>U</span>
-          <span>T</span>
+          <span className="translate-x-6 md:translate-x-0">A</span>
+          <span className="-translate-x-12 md:translate-x-0">B</span>
+          <span className="translate-x-6 md:translate-x-0">O</span>
+          <span className="-translate-x-12 md:translate-x-0">U</span>
+          <span className="translate-x-6 md:translate-x-0">T</span>
         </motion.div>
         <div className="animated-scroll text-white text-opacity-30 font-Poppins font-normal tracking-wide text-2xl md:text-3xl w-[90%] md:w-[65%] text-center">
           {`Hey, I'm Tanmay, a developer, coder, and UI/UX enthusiast.
@@ -102,8 +102,8 @@ const HomeComp = () => {
                       Math.floor(Math.random() * aestheticColors.length)
                     ]
                   }ad`}
-                  data-cursor-size={80}
-                  data-cursor-text="Vibrant"
+                  data-cursor-size={100}
+                  data-cursor-text={el}
                 >
                   {el + " "}
                 </span>
@@ -139,22 +139,65 @@ const HomeComp = () => {
         <div className="font-Poppins font-bold text-7xl md:text-8xl mix-blend-multiply">
           Projects
         </div>
-        <div className="projects flex flex-col gap-6 items-center justify-center font-FiraCode text-3xl max-h-[50vh] overflow-y-scroll text-opacity-80">
+        <div className="projects flex flex-col gap-6 items-center justify-center font-FiraCode text-3xl max-h-[50vh] overflow-y-scroll text-opacity-80 py-7">
           {projectdata.map((data, ind) => {
             return (
-              <div
-                className={`cursor-pointer duration-200 text-white text-opacity-60 hover:text-opacity-100 px-3`}
-                key={ind}
-                data-cursor-magnetic
-                data-cursor-text="open"
-              >{`<${data.name}/>`}</div>
+              <a key={ind} href="" target="_blank">
+                <div
+                  className={`cursor-pointer duration-200 text-white text-opacity-60 hover:text-opacity-100 px-3`}
+                  data-cursor-magnetic
+                  data-cursor-text="open"
+                >{`<${data.name}/>`}</div>
+              </a>
             );
           })}
         </div>
       </section>
 
       {/* Section 5 */}
-      <section className="section5 w-full h-screen flex items-center justify-center flex-col"></section>
+      <section className="section5 w-full h-screen flex items-center justify-center flex-col-reverse md:flex-row gap-3 md:gap-10">
+        <div className="qr relative w-[300px] aspect-square max-w-[70vw] opacity-90">
+          <a
+            href="https://unstoppable-tanmay.github.io/resume"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              alt=""
+              src={"/images/qr.png"}
+              fill
+              className="object-cover"
+              data-cursor-text="resume"
+              data-cursor-size={70}
+            ></Image>
+          </a>
+        </div>
+        <div className="email font-FiraCode font-medium text-lg md:text-3xl leading-[2] text-center md:text-left">
+          Tanmay Kumar <br />
+          tanmaypanda752@gmail.com <br />
+          <a
+            target="_blank"
+            data-cursor-text="visit"
+            href="https://github.com/unstoppable-tanmay"
+          >
+            github
+          </a>{" "}
+          <a
+            target="_blank"
+            data-cursor-text="visit"
+            href="https://www.linkedin.com/in/tanmay-kumar-panda-5072a6205/"
+          >
+            linkedin
+          </a>{" "}
+          <a
+            target="_blank"
+            data-cursor-text="visit"
+            href="https://www.instagram.com/unstoppable_tanmay/"
+          >
+            instagram
+          </a>
+        </div>
+      </section>
     </main>
   );
 };

@@ -62,7 +62,7 @@ export default function TextDipserse({
       onMouseLeave={() => {
         manageMouseLeave();
       }}
-      className="box text-arrival flex justify-between font-Poppins text-white text-[15vw] md:text-[13vw] lg:text-[9vw] font-bold p-10 tanmay-text" data-cursor-size="20px"
+      className="box text-arrival flex justify-between font-Poppins text-white text-[16vw] md:text-[14vw] lg:text-[10vw] font-bold p-10 tanmay-text" data-cursor-size="20px"
     >
       {getChars(children)}
     </motion.div>
