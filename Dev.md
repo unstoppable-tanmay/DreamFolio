@@ -14,7 +14,7 @@
 - main - 1e1e20 - dark grey
 - main 2- 252529 - light grey
 - secondary - dfdfd7 - tan
-- secondary 2 - ffffff - white
+- secondary 2 - dfdfd7 - white
 - button color - 747bff - light blue
 - text background color - 59b1fe, 5a68b7, 643693, 642b84 - gradient
 

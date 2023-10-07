@@ -1,27 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --secondary: #1e1e20;
+  --secondary2: #252529;
+  --main: #dfdfd7;
+  --main2: #dfdfd7;
+  --button: #747bff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --main: #1e1e20;
+    --main2: #252529;
+    --secondary: #dfdfd7;
+    --secondary2: #dfdfd7;
+    --button: #747bff;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--secondary2);
+  background: var(--main);
+  overflow: hidden;
+  height: auto;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* .main{
+  backdrop-filter:blur(100px) ;
+} */
