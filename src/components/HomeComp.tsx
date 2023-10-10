@@ -79,20 +79,22 @@ const HomeComp = () => {
       {/* In the Realm of Pixels and Logic */}
       <section className="section2 w-full min-h-screen flex items-center justify-center relative tracking-widest overflow-x-hidden">
         <motion.div
-          whileInView={{ opacity: 1, gap: "-10px" }}
-          initial={{ opacity: 0, gap: "100px" }}
+          whileInView={{ opacity: 1, letterSpacing: "0px" }}
+          initial={{ opacity: 0, letterSpacing: "50px" }}
           viewport={{ once: true, margin: "-35%" }}
           transition={{
             duration: 1.1,
             bounce: 0.5,
           }}
-          className="text-[20vh] md:text-[27vw] lg:text-[58vh] text-white text-opacity-5 font-black absolute pointer-events-none flex items-center justify-center flex-col md:flex-row leading-none"
+          className="text-[25vh] md:text-[27vw] lg:text-[58vh] text-white text-opacity-5 font-black absolute pointer-events-none rotate-90 md:rotate-0"
         >
-          <span className="translate-x-6 md:translate-x-0">A</span>
+          ABOUT
+          {/*  flex items-center justify-center flex-col md:flex-row leading-none  */}
+          {/* <span className="translate-x-6 md:translate-x-0">A</span>
           <span className="-translate-x-12 md:translate-x-0">B</span>
           <span className="translate-x-6 md:translate-x-0">O</span>
           <span className="-translate-x-12 md:translate-x-0">U</span>
-          <span className="translate-x-6 md:translate-x-0">T</span>
+          <span className="translate-x-6 md:translate-x-0">T</span> */}
         </motion.div>
         <div className="animated-scroll text-white text-opacity-30 font-Poppins font-normal tracking-wide text-2xl md:text-3xl w-[90%] md:w-[65%] text-center">
           {`Hey, I'm Tanmay, a developer, coder, and UI/UX enthusiast.

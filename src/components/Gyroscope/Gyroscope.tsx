@@ -1,34 +1,40 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useMotionValue, useSpring } from "framer-motion";
 
 const GravityBall = () => {
   const ballRef = useRef<HTMLDivElement>(null);
+  const boundaryRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [text, setText] = useState();
+
+  const clampedX = useSpring(0);
+  const clampedY = useSpring(0);
 
   useEffect(() => {
     const handleOrientation = (event: DeviceOrientationEvent) => {
-      const x = event.gamma; // Get the rotation around the x-axis
-      const y = event.beta; // Get the rotation around the y-axis
+      const x = event.gamma;
+      const y = event.beta;
 
-      // Adjust these factors to control the sensitivity of the movement
-      const factorX = 0.5;
-      const factorY = 0.5;
+      const factorX = 7;
+      const factorY = 7;
 
-      // Calculate the new position of the ball
       const newX = position.x + x! * factorX;
       const newY = position.y + y! * factorY;
 
-      // Limit the position to stay within the screen boundaries
-      const maxX = window.innerWidth - 50; // Adjust the radius of the ball
-      const maxY = window.innerHeight - 50; // Adjust the radius of the ball
+      const maxX = window.innerWidth - 80;
+      const maxY = window.innerHeight - 80;
 
-      const clampedX = Math.min(Math.max(newX, 0), maxX);
-      const clampedY = Math.min(Math.max(newY, 0), maxY);
+      clampedX.set(Math.min(Math.max(newX, 0), maxX));
+      clampedY.set(Math.min(Math.max(newY, 0), maxY));
 
-      setPosition({ x: clampedX, y: clampedY });
+      // if (clampedY.get() === 0 || clampedY.get() === maxY) {
+      //   window.scrollBy({ top: y! * 2 });
+      // }
 
-      // Update the position of the ball
+      setPosition({ x: clampedX.get(), y: clampedY.get() });
+
       if (ballRef.current) {
-        ballRef.current.style.transform = `translate(${clampedX}px, ${clampedY}px)`;
+        ballRef.current.style.transform = `translate(${clampedX.get()}px, ${clampedY.get()}px)`;
       }
     };
 
@@ -37,21 +43,26 @@ const GravityBall = () => {
     return () => {
       window.removeEventListener("deviceorientation", handleOrientation);
     };
-  }, [position]);
+  }, [position, clampedX, clampedY]);
 
   return (
-    <div className="wrapper w-screen h-screen absolute">
+    <div
+      className="wrapper w-screen h-screen absolute z-50 pointer-events-none mix-blend-difference"
+      ref={boundaryRef}
+    >
       <div
         ref={ballRef}
         style={{
-          width: "50px",
-          height: "50px",
+          width: "80px",
+          height: "80px",
           position: "absolute",
           borderRadius: "50%",
-          transition: "transform 0.1s",
+          transition: "transform 0.7s",
         }}
-        className="bg-white"
-      ></div>
+        className="bg-white "
+      >
+        {text}
+      </div>
     </div>
   );
 };

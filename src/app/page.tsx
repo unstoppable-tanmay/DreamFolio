@@ -25,6 +25,24 @@ export default function Home() {
     );
   }, [isMobile]);
 
+  function playTone(frequency: number, duration: number): void {
+    const audioContext = new window.AudioContext();
+    const oscillator = audioContext.createOscillator();
+
+    oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+    oscillator.connect(audioContext.destination);
+    oscillator.start();
+
+    // Stop the oscillator after the specified duration (in milliseconds)
+    setTimeout(() => {
+      oscillator.stop();
+    }, duration);
+  }
+  function getRandomElementFromArray<T>(array: T[]): T | number {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
+  }
+
   return (
     <ParallaxProvider>
       {isMobile ? (
@@ -40,7 +58,13 @@ export default function Home() {
         <Gyroscope />
       )}
       {/* onDoubleClick={()=>{router.push('/dev')}} */}
-      <div ref={scrollRef}>
+      <div
+        ref={scrollRef}
+        onClick={(e) => {
+          // e.preventDefault();
+          playTone(getRandomElementFromArray([440, 523, 659, 784]), 200);
+        }}
+      >
         <HomeComp />
       </div>
     </ParallaxProvider>

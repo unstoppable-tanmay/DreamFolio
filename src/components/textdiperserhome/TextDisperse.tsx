@@ -48,13 +48,13 @@ export default function TextDipserse({
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.5,gap:"20%" }}
-      animate={{ opacity: 1, scale: 1,gap:"0%" }}
+      initial={{ opacity: 0, scale: 0.5, gap: "20%" }}
+      animate={{ opacity: 1, scale: 1, gap: "0%" }}
       transition={{
         duration: 1.2,
         delay: 0.3,
         ease: [0, 0.71, 0.2, 1.01],
-        staggerChildren: 1
+        staggerChildren: 1,
       }}
       onMouseEnter={() => {
         manageMouseEnter();
@@ -62,7 +62,8 @@ export default function TextDipserse({
       onMouseLeave={() => {
         manageMouseLeave();
       }}
-      className="box text-arrival flex justify-between font-Poppins text-white text-[16vw] md:text-[14vw] lg:text-[10vw] font-bold p-10 tanmay-text" data-cursor-size="20px"
+      className="box text-arrival flex justify-between font-Poppins text-white text-[18vw] md:text-[14vw] lg:text-[10vw] font-bold p-10 tanmay-text -mt-20 md:mt-0"
+      data-cursor-size="20px"
     >
       {getChars(children)}
     </motion.div>
