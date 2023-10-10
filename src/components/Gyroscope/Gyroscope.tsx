@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const GravityBall = () => {
-  const ballRef = useRef(null);
+  const ballRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
