@@ -13,9 +13,9 @@ const Cardcomp = () => {
     var currentMousePos = { x: 0, y: 0 };
     var mouseFromCenter = { x: 0, y: 0 };
 
-    const isMobile = !window.matchMedia('only screen and (min-width: 1000px)').matches
+    var isMobile = window.matchMedia('only screen and (min-width: 1000px)').matches
 
-    !isMobile && document.addEventListener("mousemove", function (event) {
+    isMobile && document.addEventListener("mousemove", function (event) {
       var wHeight = window.innerHeight;
       var wWidth = window.innerWidth;
 

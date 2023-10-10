@@ -5,32 +5,30 @@ import React, { useEffect, useState } from "react";
 import Cardcomp from "./3dcard/Cardcomp";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Parallax } from "react-scroll-parallax";
+import Bg from "./Bg/Bg";
+import { useRouter } from "next/navigation";
 
 const projectdata = [
   {
     name: "The Book",
-    img: "https://miro.medium.com/v2/resize:fit:6148/1*v_wrmfHaBLUxJreQF8ldmQ.jpeg",
-    link: "",
+    link: "https://github.com/unstoppable-tanmay/Library",
   },
   {
     name: "Cymetics",
-    img: "https://camo.envatousercontent.com/8577b969da9960145870f1659086972032c1cf3b/687474703a2f2f693130302e666173747069632e72752f6269672f323031372f313231342f32312f34386438666439396137626433623764386433636631643863343763386132312e6a7067",
-    link: "",
+    link: "https://github.com/unstoppable-tanmay/Cymatics",
   },
   {
     name: "Threads",
-    img: "https://imgeng.jagran.com/images/2023/aug/meta-threads1692959377628.jpg",
-    link: "",
+    link: "https://github.com/unstoppable-tanmay/Threads",
   },
   {
     name: "FoodLab",
-    img: "https://imgeng.jagran.com/images/2023/aug/meta-threads1692959377628.jpg",
-    link: "",
+    link: "https://github.com/unstoppable-tanmay/FoodLab",
   },
   {
     name: "GcekFolio",
-    img: "https://imgeng.jagran.com/images/2023/aug/meta-threads1692959377628.jpg",
-    link: "",
+    link: "https://codebreakersgcek.engineer/",
   },
 ];
 
@@ -50,20 +48,31 @@ const aestheticColors = [
 ];
 
 const HomeComp = () => {
-  useEffect(() => {
-    window.addEventListener("deviceorientation", (event) => {
-      console.log(event.alpha, event.beta, event.gamma);
-    });
-  });
+  const router = useRouter();
 
   return (
-    <main className="main w-screen relative flex flex-col">
+    <main className="main w-screen flex flex-col items-center justify-center">
       {/* Section 1 */}
-      <section className="section1 w-full h-screen flex items-center justify-center relative">
-        {/* <BlobRotate/> */}
+      <section
+        className="section1 w-full h-screen flex items-center flex-col -gap-5 justify-center relative"
+        onClick={() => console.log("first")}
+      >
+        <Bg />
         <TextDipserse setBackground={false}>
           <p className="bg-black">Tanmay</p>
         </TextDipserse>
+        {/* <div className="absolute right-6 top-6 hidden lg:flex">
+          <div
+            className="devbtn w-14 h-14 bg-white rounded-full flex items-center justify-center text-black font-FiraCode text-lg font-medium"
+            data-cursor-color="#ffffff30"
+            data-cursor-size="30px"
+            onClick={() => {
+              router.push("/dev");
+            }}
+          >
+            Dev
+          </div>
+        </div> */}
       </section>
 
       {/* Section 2 */}
@@ -127,7 +136,7 @@ const HomeComp = () => {
             delay: 0.2,
             duration: 1.1,
           }}
-          className="absolute md:flex hidden justify-between font-FiraCode font-semibold text-[60vh] z-0"
+          className="absolute lg:flex hidden justify-between font-FiraCode font-semibold text-[60vh] z-0"
         >
           <span className="hover:text-opacity-80 duration-200 text-white text-opacity-10">
             {"{"}
@@ -142,7 +151,7 @@ const HomeComp = () => {
         <div className="projects flex flex-col gap-6 items-center justify-center font-FiraCode text-3xl max-h-[50vh] overflow-y-scroll text-opacity-80 py-7">
           {projectdata.map((data, ind) => {
             return (
-              <a key={ind} href="" target="_blank">
+              <a key={ind} href={data.link} target="_blank">
                 <div
                   className={`cursor-pointer duration-200 text-white text-opacity-60 hover:text-opacity-100 px-3`}
                   data-cursor-magnetic
@@ -166,14 +175,15 @@ const HomeComp = () => {
               alt=""
               src={"/images/qr.png"}
               fill
-              className="object-cover"
+              className="object-cover hover:scale-105 duration-300"
               data-cursor-text="resume"
               data-cursor-size={70}
             ></Image>
           </a>
         </div>
         <div className="email font-FiraCode font-medium text-lg md:text-3xl leading-[2] text-center md:text-left">
-          Tanmay Kumar <br />
+          Tanmay Kumar Panda
+          <br />
           tanmaypanda752@gmail.com <br />
           <a
             target="_blank"
