@@ -18,9 +18,9 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   const router = useRouter();
-  useEffect(()=>{
-    setLoading(false)
-  },[loading])
+  useEffect(() => {
+    setLoading(false);
+  }, [loading]);
 
   const lenis = useLenis(({ scroll }) => {
     // console.log(scroll);
@@ -33,7 +33,6 @@ export default function Home() {
       window.matchMedia("only screen and (min-width: 1000px)").matches
     );
   }, [isMobile]);
-
 
   // function playTone(frequency: number, duration: number): void {
   //   const audioContext = new window.AudioContext();
@@ -56,8 +55,16 @@ export default function Home() {
   return (
     <>
       {loading ? (
-        <div className="w-screen h-screen relative">
-          <Image alt="" src={"/images/loader.gif"} fill className="object-cover mix-blend-screen"></Image>
+        <div className="w-screen h-screen flex flex-col font-FiraCode items-center justify-center overflow-hidden">
+          <div className="wrapper relative w-[300px] aspect-square">
+            <Image
+              alt=""
+              src={"/images/loader4.gif"}
+              fill
+              className="object-cover mix-blend-screen"
+            ></Image>
+          </div>
+          Loading . . .
         </div>
       ) : (
         <>
