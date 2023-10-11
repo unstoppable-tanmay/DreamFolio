@@ -6,6 +6,7 @@ import { disperse } from "./anim";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { gsap } from "gsap";
+import { Parallax } from "react-scroll-parallax";
 
 export default function TextDipserse({
   children,
@@ -32,7 +33,8 @@ export default function TextDipserse({
             duration: 1.3,
           }}
         >
-          {char}
+          {/* speed={4 * Math.pow(-1, i)} */}
+          <Parallax rotate={[-15 * Math.pow(-1, i),13 * Math.pow(-1, i)]}>{char}</Parallax>
         </motion.span>
       );
     });
@@ -54,7 +56,7 @@ export default function TextDipserse({
         duration: 1.2,
         delay: 0.3,
         ease: [0, 0.71, 0.2, 1.01],
-        staggerChildren: 1,
+        // staggerChildren: 1,
       }}
       onMouseEnter={() => {
         manageMouseEnter();
@@ -62,7 +64,7 @@ export default function TextDipserse({
       onMouseLeave={() => {
         manageMouseLeave();
       }}
-      className="box text-arrival flex justify-between font-Poppins text-white text-[18vw] md:text-[14vw] lg:text-[10vw] font-bold p-10 tanmay-text -mt-20 md:mt-0"
+      className="box text-arrival flex justify-between font-Poppins text-white text-[18vw] md:text-[14vw] lg:text-[10vw] font-bold p-10 tanmay-text -mt-28 md:-mt-10"
       data-cursor-size="20px"
     >
       {getChars(children)}

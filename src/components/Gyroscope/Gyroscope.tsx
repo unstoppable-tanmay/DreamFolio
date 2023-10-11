@@ -47,8 +47,9 @@ const GravityBall = () => {
 
   return (
     <div
-      className="wrapper w-screen h-screen absolute z-50 pointer-events-none mix-blend-difference"
+      className="wrapper w-screen h-[90vh] fixed z-50 pointer-events-none mix-blend-difference"
       ref={boundaryRef}
+      data-lenis-prevent
     >
       <div
         ref={ballRef}

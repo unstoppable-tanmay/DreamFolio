@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./Locomotive.css";
 export default function useLocoScroll(ref: React.RefObject<any>) {
   const [isMobile, setIsMobile] = useState(true);
 

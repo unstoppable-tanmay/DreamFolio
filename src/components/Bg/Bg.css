@@ -8,7 +8,7 @@
   } */
   
   .firefly {
-    position: fixed;
+    /* position: fixed; */
     left: 50vw;
     top: 50vh;
     width: 0.4vw;

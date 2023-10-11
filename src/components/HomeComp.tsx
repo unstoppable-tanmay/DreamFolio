@@ -1,7 +1,7 @@
 "use client";
 
 import TextDipserse from "./textdiperserhome/TextDisperse";
-import React, { useEffect, useState } from "react";
+import React, { useRef } from "react";
 import Cardcomp from "./3dcard/Cardcomp";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -47,37 +47,27 @@ const aestheticColors = [
   "#D4A5A5", // Dusty Rose
 ];
 
-const HomeComp = () => {
-  const router = useRouter();
-
+const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
   return (
-    <main className="main w-screen flex flex-col items-center justify-center">
+    <main className="main w-screen flex flex-col items-center justify-center home overflow-x-hidden">
       {/* Section 1 */}
-      <section
-        className="section1 w-full h-screen flex items-center flex-col -gap-5 justify-center relative"
-        onClick={() => console.log("first")}
-      >
+      <section className="section1 w-full h-screen flex items-center flex-col -gap-5 justify-center relative">
         <Bg />
-        <TextDipserse setBackground={false}>
-          <p className="bg-black">Tanmay</p>
-        </TextDipserse>
-        {/* <div className="absolute right-6 top-6 hidden lg:flex">
-          <div
-            className="devbtn w-14 h-14 bg-white rounded-full flex items-center justify-center text-black font-FiraCode text-lg font-medium"
-            data-cursor-color="#ffffff30"
-            data-cursor-size="30px"
-            onClick={() => {
-              router.push("/dev");
-            }}
-          >
-            Dev
-          </div>
-        </div> */}
+        <div className="ScrollDown absolute bottom-32 md:bottom-16 ">
+          <Parallax speed={6}>
+            <div className="icon"></div>
+          </Parallax>
+        </div>
+        <Parallax speed={-5} scale={[0.2, 2]}>
+          <TextDipserse setBackground={false}>
+            <p className="bg-black">Tanmay</p>
+          </TextDipserse>
+        </Parallax>
       </section>
 
       {/* Section 2 */}
       {/* In the Realm of Pixels and Logic */}
-      <section className="section2 w-full min-h-screen flex items-center justify-center relative tracking-widest overflow-x-hidden">
+      <section className="section2 w-full min-h-screen flex items-center justify-center relative tracking-widest overflow-x-hidden overflow-y-hidden">
         <motion.div
           whileInView={{ opacity: 1, letterSpacing: "0px" }}
           initial={{ opacity: 0, letterSpacing: "50px" }}
@@ -88,13 +78,9 @@ const HomeComp = () => {
           }}
           className="text-[25vh] md:text-[27vw] lg:text-[58vh] text-white text-opacity-5 font-black absolute pointer-events-none rotate-90 md:rotate-0"
         >
-          ABOUT
-          {/*  flex items-center justify-center flex-col md:flex-row leading-none  */}
-          {/* <span className="translate-x-6 md:translate-x-0">A</span>
-          <span className="-translate-x-12 md:translate-x-0">B</span>
-          <span className="translate-x-6 md:translate-x-0">O</span>
-          <span className="-translate-x-12 md:translate-x-0">U</span>
-          <span className="translate-x-6 md:translate-x-0">T</span> */}
+          <Parallax scale={[isMobile ? 1.5 : 1, isMobile ? 1 : 1.2]}>
+            ABOUT
+          </Parallax>
         </motion.div>
         <div className="animated-scroll text-white text-opacity-30 font-Poppins font-normal tracking-wide text-2xl md:text-3xl w-[90%] md:w-[65%] text-center">
           {`Hey, I'm Tanmay, a developer, coder, and UI/UX enthusiast.
@@ -124,41 +110,100 @@ const HomeComp = () => {
       </section>
 
       {/* Section 3 */}
-      <section className="section3 w-full h-screen relative">
+      <section className="section3 w-full h-screen relative flex items-center justify-center">
         <Cardcomp />
       </section>
+
+      {/* Section 4 */}
+      <section className="section3 w-full h-screen relative flex flex-col justify-center font-sans font-semibold md:font-bold text-[9vh] md:text-[15vh]">
+        <Parallax translateX={[-50, 0]}>
+          <div className="w-[200vw] flex items-center gap-5 md:gap-10 ">
+            {"HTML CSS JS REACT NEXT SCSS TAILWIND ANGULAR MUI ANT"
+              .split(" ")
+              .map((ele, ind) => {
+                return (
+                  <span className={`text-white duration-200 ${ind%2?"text-opacity-0  text-stroke text-transparent":"hover:text-opacity-90 text-opacity-20"}`} key={ind}>
+                    {ele}{" "}
+                  </span>
+                );
+              })}
+          </div>
+        </Parallax>
+        <Parallax translateX={[0, -50]}>
+          <div className="w-[200vw] flex items-center gap-5 md:gap-10 ">
+            {"NODE MONGO EXPRESS PRISMA SPRING REDIS KAFKA"
+              .split(" ")
+              .map((ele, ind) => {
+                return (
+                  <span className={`text-white duration-200 ${ind%2?"text-opacity-0  text-stroke text-transparent":"hover:text-opacity-90 text-opacity-20"}`} key={ind}>
+                    {ele}{" "}
+                  </span>
+                );
+              })}
+          </div>
+        </Parallax>
+        <Parallax translateX={[-40, 0]}>
+          <div className="w-[200vw] flex items-center gap-5 md:gap-10 font-bold">
+            {"FLUTTER DART JAVA PYTHON GO RUBY C# C++ "
+              .split(" ")
+              .map((ele, ind) => {
+                return (
+                  <span className={`text-white duration-200 ${ind%2?"text-opacity-0  text-stroke text-transparent":"hover:text-opacity-90 text-opacity-20"}`} key={ind}>
+                    {ele}{" "}
+                  </span>
+                );
+              })}
+          </div>
+        </Parallax>
+      </section>
+
+      {/* Section 4 */}
       <section
         className={`section4 w-full h-screen flex items-center justify-center flex-col gap-20 relative text-white duration-200`}
       >
-        <motion.div
-          whileInView={{ width: "90%", opacity: 1 }}
-          initial={{ width: "70%", opacity: 0 }}
-          viewport={{ once: true, margin: "-50%" }}
-          transition={{
-            delay: 0.2,
-            duration: 1.1,
-          }}
-          className="absolute lg:flex hidden justify-between font-FiraCode font-semibold text-[60vh] z-0"
+        <div
+          className="w-[90%] absolute lg:flex hidden justify-between font-FiraCode font-semibold text-[60vh] z-0"
         >
-          <span className="hover:text-opacity-80 duration-200 text-white text-opacity-10">
-            {"{"}
-          </span>
-          <span className="hover:text-opacity-80 duration-200 text-white text-opacity-10">
-            {"}"}
-          </span>
-        </motion.div>
-        <div className="font-Poppins font-bold text-7xl md:text-8xl mix-blend-multiply">
+          <Parallax translateX={[0, -80]}>
+            <span className="hover:text-opacity-80 duration-200 text-white text-opacity-10">
+              {"{"}
+            </span>
+          </Parallax>
+          <Parallax translateX={[0, 80]}>
+            <span className="hover:text-opacity-80 duration-200 text-white text-opacity-10">
+              {"}"}
+            </span>
+          </Parallax>
+        </div>
+        <div className="font-Poppins font-bold text-7xl md:text-8xl">
           Projects
         </div>
-        <div className="projects flex flex-col gap-6 items-center justify-center font-FiraCode text-3xl max-h-[50vh] overflow-y-scroll text-opacity-80 py-7">
+        <div className="projects flex flex-col gap-6 items-center justify-center font-FiraCode text-3xl max-h-[50vh] overflow-visible text-opacity-80 py-7">
           {projectdata.map((data, ind) => {
             return (
-              <a key={ind} href={data.link} target="_blank">
-                <div
+              <a
+                key={ind}
+                href={data.link}
+                target="_blank"
+                className="hover:scale-110 duration-200"
+              >
+                <motion.div
+                  whileInView={{ translateX: 0, opacity: 1, scale: 1 }}
+                  initial={
+                    ind % 2 == 0
+                      ? { translateX: "30px", opacity: 0, scale: 1 }
+                      : { translateX: "-30px", opacity: 0, scale: 1 }
+                  }
+                  viewport={{ once: true, margin: "-15%" }}
+                  transition={{
+                    bounce: true,
+                    damping: 8,
+                    duration: 0.7,
+                  }}
                   className={`cursor-pointer duration-200 text-white text-opacity-60 hover:text-opacity-100 px-3`}
-                  data-cursor-magnetic
+                  // data-cursor-magnetic
                   data-cursor-text="open"
-                >{`<${data.name}/>`}</div>
+                >{`<${data.name}/>`}</motion.div>
               </a>
             );
           })}
@@ -183,14 +228,14 @@ const HomeComp = () => {
             ></Image>
           </a>
         </div>
-        <div className="email font-FiraCode font-medium text-lg md:text-3xl leading-[2] text-center md:text-left">
-          Tanmay Kumar Panda
-          <br />
+        <div className="font-FiraCode md:leading-loose font-medium text-lg md:text-3xl text-center md:text-left">
+          Tanmay Kumar Panda <br />
           tanmaypanda752@gmail.com <br />
           <a
             target="_blank"
             data-cursor-text="visit"
             href="https://github.com/unstoppable-tanmay"
+            className="text-blue-200 hover:text-blue-400 duration-200"
           >
             github
           </a>{" "}
@@ -198,6 +243,7 @@ const HomeComp = () => {
             target="_blank"
             data-cursor-text="visit"
             href="https://www.linkedin.com/in/tanmay-kumar-panda-5072a6205/"
+            className="text-blue-200 hover:text-blue-400 duration-200"
           >
             linkedin
           </a>{" "}
@@ -205,6 +251,7 @@ const HomeComp = () => {
             target="_blank"
             data-cursor-text="visit"
             href="https://www.instagram.com/unstoppable_tanmay/"
+            className="text-blue-200 hover:text-blue-400 duration-200"
           >
             instagram
           </a>

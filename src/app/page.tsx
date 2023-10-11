@@ -1,21 +1,30 @@
 "use client";
 
 import HomeComp from "@/components/HomeComp";
-import useLocoScroll from "@/components/LocomotiveScroll";
+import useLocoScroll from "@/components/Locomotive/LocomotiveScroll";
 import React from "react";
 import { useEffect, useState } from "react";
 import { ParallaxProvider } from "react-scroll-parallax";
 
 import { Cursor } from "react-creative-cursor";
 import "react-creative-cursor/dist/styles.css";
-import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Gyroscope from "@/components/Gyroscope/Gyroscope";
 
+import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
+import Image from "next/image";
+
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+
   const router = useRouter();
-  const scrollRef = React.createRef<HTMLDivElement>();
-  useLocoScroll(scrollRef);
+  useEffect(()=>{
+    setLoading(false)
+  },[loading])
+
+  const lenis = useLenis(({ scroll }) => {
+    // console.log(scroll);
+  });
 
   const [isMobile, setIsMobile] = useState(true);
 
@@ -25,48 +34,59 @@ export default function Home() {
     );
   }, [isMobile]);
 
-  function playTone(frequency: number, duration: number): void {
-    const audioContext = new window.AudioContext();
-    const oscillator = audioContext.createOscillator();
 
-    oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
-    oscillator.connect(audioContext.destination);
-    oscillator.start();
+  // function playTone(frequency: number, duration: number): void {
+  //   const audioContext = new window.AudioContext();
+  //   const oscillator = audioContext.createOscillator();
 
-    // Stop the oscillator after the specified duration (in milliseconds)
-    setTimeout(() => {
-      oscillator.stop();
-    }, duration);
-  }
-  function getRandomElementFromArray<T>(array: T[]): T | number {
-    const randomIndex = Math.floor(Math.random() * array.length);
-    return array[randomIndex];
-  }
+  //   oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+  //   oscillator.connect(audioContext.destination);
+  //   oscillator.start();
+
+  //   // Stop the oscillator after the specified duration (in milliseconds)
+  //   setTimeout(() => {
+  //     oscillator.stop();
+  //   }, duration);
+  // }
+  // function getRandomElementFromArray<T>(array: T[]): T | number {
+  //   const randomIndex = Math.floor(Math.random() * array.length);
+  //   return array[randomIndex];
+  // }
 
   return (
-    <ParallaxProvider>
-      {isMobile ? (
-        <Cursor
-          isGelly={true}
-          cursorBackgrounColor="#fff"
-          cursorSize={60}
-          exclusionBackgroundColor="#000"
-          cursorInnerColor="#000"
-          colorAnimationDuration={0.5}
-        />
+    <>
+      {loading ? (
+        <div className="w-screen h-screen relative">
+          <Image alt="" src={"/images/loader.gif"} fill className="object-cover mix-blend-screen"></Image>
+        </div>
       ) : (
-        <Gyroscope />
+        <>
+          {isMobile ? (
+            <Cursor
+              isGelly={true}
+              cursorBackgrounColor="#fff"
+              cursorSize={60}
+              exclusionBackgroundColor="#000"
+              cursorInnerColor="#000"
+              colorAnimationDuration={0.5}
+            />
+          ) : (
+            <Gyroscope />
+          )}
+          <ParallaxProvider>
+            <ReactLenis
+              root
+              options={{
+                lerp: isMobile ? 0.05 : 0.06,
+                syncTouch: true,
+                smoothTouch: true,
+              }}
+            >
+              <HomeComp isMobile={isMobile} />
+            </ReactLenis>
+          </ParallaxProvider>
+        </>
       )}
-      {/* onDoubleClick={()=>{router.push('/dev')}} */}
-      <div
-        ref={scrollRef}
-        onClick={(e) => {
-          // e.preventDefault();
-          playTone(getRandomElementFromArray([440, 523, 659, 784]), 200);
-        }}
-      >
-        <HomeComp />
-      </div>
-    </ParallaxProvider>
+    </>
   );
 }
