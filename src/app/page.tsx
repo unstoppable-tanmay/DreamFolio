@@ -59,7 +59,7 @@ export default function Home() {
           <div className="wrapper relative w-[300px] aspect-square">
             <Image
               alt=""
-              src={"/images/loader4.gif"}
+              src={"/images/loader.gif"}
               fill
               className="object-cover mix-blend-screen"
             ></Image>
