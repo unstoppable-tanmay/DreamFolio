@@ -1,7 +1,7 @@
 "use client";
 
 import TextDipserse from "./textdiperserhome/TextDisperse";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Cardcomp from "./3dcard/Cardcomp";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -48,8 +48,61 @@ const aestheticColors = [
 ];
 
 const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
+  const [loading, setLoading] = useState(true);
+  const [loadingAnimation, setLoadingAnimation] = useState(false);
+
+  function delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  const runLoading = async () => {
+    // await delay(1000);
+    setLoadingAnimation(true);
+    await delay(1000);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    runLoading();
+  });
+
   return (
-    <main className="main w-screen flex flex-col items-center justify-center home overflow-x-hidden">
+    <main
+      className={
+        loading
+          ? `main w-screen h-screen overflow-hidden relative`
+          : `main w-screen flex flex-col items-center justify-center home overflow-x-hidden relative`
+      }
+    >
+      {loading ? (
+        <div className="w-screen h-screen font-FiraCode overflow-hidden absolute z-50">
+          <div
+            className={
+              !loadingAnimation
+                ? "overflow-hidden duration-700 h-[50vh] w-screen flex justify-center items-end bg-[#202123]"
+                : "overflow-hidden duration-700 h-[50vh] w-screen flex justify-center items-end bg-[#202123] -translate-y-[100%]"
+            }
+          >
+            <div className="text-[18vw] md:text-[14vw] lg:text-[10vw] font-Poppins font-black leading-none translate-y-[50%]">
+              welcome
+            </div>
+          </div>
+
+          <div
+            className={
+              !loadingAnimation
+                ? "overflow-hidden duration-700 h-[50vh] w-screen flex justify-center items-start bg-[#202123]"
+                : "overflow-hidden duration-700 h-[50vh] w-screen flex justify-center items-start bg-[#202123] translate-y-[100%]"
+            }
+          >
+            <div className="text-[18vw] md:text-[14vw] lg:text-[10vw] font-Poppins font-black duration-300 leading-none -translate-y-[50%]">
+              welcome
+            </div>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
       {/* Section 1 */}
       <section className="section1 w-full h-screen flex items-center flex-col -gap-5 justify-center relative">
         <Bg />
@@ -82,6 +135,8 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
             ABOUT
           </Parallax>
         </motion.div>
+        {/* text-2xl md:text-3xl */}
+        {/* text-[5vw] md:text-[1.8vw] */}
         <div className="animated-scroll text-white text-opacity-30 font-Poppins font-normal tracking-wide text-2xl md:text-3xl w-[90%] md:w-[65%] text-center">
           {`Hey, I'm Tanmay, a developer, coder, and UI/UX enthusiast.
           I'm on a mission to blend creativity and functionality to craft
@@ -115,14 +170,21 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
       </section>
 
       {/* Section 4 */}
-      <section className="section3 w-full h-screen relative flex flex-col justify-center font-sans font-semibold md:font-bold text-[9vh] md:text-[15vh]">
+      <section className="section4 w-full h-screen relative flex flex-col justify-center font-sans font-semibold md:font-bold text-[9vh] md:text-[15vh]">
         <Parallax translateX={[-50, 0]}>
           <div className="w-[200vw] flex items-center gap-5 md:gap-10 ">
             {"HTML CSS JS REACT NEXT SCSS TAILWIND ANGULAR MUI ANT"
               .split(" ")
               .map((ele, ind) => {
                 return (
-                  <span className={`text-white duration-200 ${ind%2?"text-opacity-0  text-stroke text-transparent":"hover:text-opacity-90 text-opacity-20"}`} key={ind}>
+                  <span
+                    className={`text-white duration-200 ${
+                      ind % 2
+                        ? "text-opacity-0  text-stroke text-transparent"
+                        : "hover:text-opacity-90 text-opacity-20"
+                    }`}
+                    key={ind}
+                  >
                     {ele}{" "}
                   </span>
                 );
@@ -135,7 +197,14 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
               .split(" ")
               .map((ele, ind) => {
                 return (
-                  <span className={`text-white duration-200 ${ind%2?"text-opacity-0  text-stroke text-transparent":"hover:text-opacity-90 text-opacity-20"}`} key={ind}>
+                  <span
+                    className={`text-white duration-200 ${
+                      ind % 2
+                        ? "text-opacity-0  text-stroke text-transparent"
+                        : "hover:text-opacity-90 text-opacity-20"
+                    }`}
+                    key={ind}
+                  >
                     {ele}{" "}
                   </span>
                 );
@@ -148,7 +217,14 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
               .split(" ")
               .map((ele, ind) => {
                 return (
-                  <span className={`text-white duration-200 ${ind%2?"text-opacity-0  text-stroke text-transparent":"hover:text-opacity-90 text-opacity-20"}`} key={ind}>
+                  <span
+                    className={`text-white duration-200 ${
+                      ind % 2
+                        ? "text-opacity-0  text-stroke text-transparent"
+                        : "hover:text-opacity-90 text-opacity-20"
+                    }`}
+                    key={ind}
+                  >
                     {ele}{" "}
                   </span>
                 );
@@ -158,12 +234,8 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
       </section>
 
       {/* Section 4 */}
-      <section
-        className={`section4 w-full h-screen flex items-center justify-center flex-col gap-20 relative text-white duration-200`}
-      >
-        <div
-          className="w-[90%] absolute lg:flex hidden justify-between font-FiraCode font-semibold text-[60vh] z-0"
-        >
+      <section className="section5 w-full h-screen flex items-center justify-center flex-col gap-20 relative text-white duration-200">
+        <div className="w-[90%] absolute lg:flex hidden justify-between font-FiraCode font-semibold text-[60vh] z-0">
           <Parallax translateX={[0, -80]}>
             <span className="hover:text-opacity-80 duration-200 text-white text-opacity-10">
               {"{"}
@@ -175,7 +247,7 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
             </span>
           </Parallax>
         </div>
-        <div className="font-Poppins font-bold text-7xl md:text-8xl">
+        <div className="font-Poppins font-bold text-[17vw] md:text-[10vw] lg:text-[5.7vw]">
           Projects
         </div>
         <div className="projects flex flex-col gap-6 items-center justify-center font-FiraCode text-3xl max-h-[50vh] overflow-visible text-opacity-80 py-7">
@@ -211,7 +283,7 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
       </section>
 
       {/* Section 5 */}
-      <section className="section5 w-full h-screen flex items-center justify-center flex-col-reverse md:flex-row gap-3 md:gap-10">
+      <section className="section6 w-full h-screen flex items-center justify-center flex-col-reverse md:flex-row gap-3 md:gap-10">
         <div className="qr relative w-[300px] aspect-square max-w-[70vw] opacity-90">
           <a
             href="https://unstoppable-tanmay.github.io/resume"
@@ -262,14 +334,3 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
 };
 
 export default HomeComp;
-
-const springOpen = {
-  open: {
-    scale: 0,
-    opacity: 0,
-  },
-  closed: {
-    scale: 1,
-    opacity: 0.25,
-  },
-};
