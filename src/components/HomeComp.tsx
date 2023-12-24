@@ -314,7 +314,7 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
           <a
             target="_blank"
             data-cursor-text="visit"
-            href="https://www.linkedin.com/in/tanmay-kumar-panda-5072a6205/"
+            href="https://www.linkedin.com/in/unstoppable-tanmay"
             className="text-blue-200 hover:text-blue-400 duration-200"
           >
             linkedin
