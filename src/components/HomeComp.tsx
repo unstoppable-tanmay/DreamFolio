@@ -17,7 +17,7 @@ const projectdata = [
   {
     name: "Cymetics",
     link: "https://github.com/unstoppable-tanmay/Cymatics",
-  },
+  },  
   {
     name: "Threads",
     link: "https://github.com/unstoppable-tanmay/Threads",
@@ -74,6 +74,7 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
           : `main w-screen flex flex-col items-center justify-center home overflow-x-hidden relative`
       }
     >
+      {/* Loading */}
       {loading ? (
         <div className="w-screen h-screen font-FiraCode overflow-hidden absolute z-50">
           <div
@@ -103,7 +104,7 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
       ) : (
         <></>
       )}
-      {/* Section 1 */}
+      {/* Section 1 Tanmay */}
       <section className="section1 w-full h-screen flex items-center flex-col -gap-5 justify-center relative">
         <Bg />
         <div className="ScrollDown absolute bottom-32 md:bottom-16 ">
@@ -118,7 +119,7 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
         </Parallax>
       </section>
 
-      {/* Section 2 */}
+      {/* Section 2 About */}
       {/* In the Realm of Pixels and Logic */}
       <section className="section2 w-full min-h-screen flex items-center justify-center relative tracking-widest overflow-x-hidden overflow-y-hidden">
         <motion.div
@@ -164,12 +165,12 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
         </div>
       </section>
 
-      {/* Section 3 */}
+      {/* Section 3 My Photo */}
       <section className="section3 w-full h-screen relative flex items-center justify-center">
         <Cardcomp />
       </section>
 
-      {/* Section 4 */}
+      {/* Section 4 Skills */}
       <section className="section4 w-full h-screen relative flex flex-col justify-center font-sans font-semibold md:font-bold text-[9vh] md:text-[15vh]">
         <Parallax translateX={[-50, 0]}>
           <div className="w-[200vw] flex items-center gap-5 md:gap-10 ">
@@ -233,7 +234,7 @@ const HomeComp = ({ isMobile }: { isMobile: boolean }) => {
         </Parallax>
       </section>
 
-      {/* Section 4 */}
+      {/* Section 4 Projects */}
       <section className="section5 w-full h-screen flex items-center justify-center flex-col gap-20 relative text-white duration-200">
         <div className="w-[90%] absolute lg:flex hidden justify-between font-FiraCode font-semibold text-[60vh] z-0">
           <Parallax translateX={[0, -80]}>
