@@ -13,8 +13,6 @@ const Contact = () => {
           transition={{
             delay: 0.5,
             duration: 0.9,
-            ease: "easeInOut",
-            type: "spring",
           }}
           className="qr relative w-[300px] aspect-square max-w-[70vw] opacity-90 overflow-hidden"
         >
@@ -40,8 +38,6 @@ const Contact = () => {
             transition={{
               delay: 0.7,
               duration: 0.9,
-              ease: "easeInOut",
-              type: "spring",
             }}
           >
             Tanmay Kumar Panda
@@ -52,8 +48,6 @@ const Contact = () => {
             transition={{
               delay: 0.9,
               duration: 0.9,
-              ease: "easeInOut",
-              type: "spring",
             }}
           >
             tanmaypanda752@gmail.com
@@ -65,8 +59,6 @@ const Contact = () => {
               transition={{
                 delay: 0.8,
                 duration: 0.9,
-                ease: "easeInOut",
-                type: "spring",
               }}
               target="_blank"
               data-cursor-text="visit"
@@ -81,8 +73,6 @@ const Contact = () => {
               transition={{
                 delay: 1.1,
                 duration: 0.8,
-                ease: "easeInOut",
-                type: "spring",
               }}
               target="_blank"
               data-cursor-text="visit"
@@ -97,8 +87,6 @@ const Contact = () => {
               transition={{
                 delay: 1.4,
                 duration: 0.7,
-                ease: "easeInOut",
-                type: "spring",
               }}
               target="_blank"
               data-cursor-text="visit"
