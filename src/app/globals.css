@@ -28,14 +28,12 @@
 body {
   color: var(--secondary2);
   background: #202123;
-  /* overflow: hidden; */
-  height: auto;
 }
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 *::-webkit-scrollbar {
