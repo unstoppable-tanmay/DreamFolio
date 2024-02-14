@@ -1,11 +1,14 @@
 import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
 
+import bookgif from "../../../public/images/projectImages/thebook.gif";
+import cyameticsgif from "../../../public/images/projectImages/cyametics.gif";
+
 type projectDataType = {
   name: string;
-  image: string;
+  image: string | StaticImageData;
   github?: string;
   link?: string;
   stack: string[];
@@ -28,7 +31,7 @@ const Projects = () => {
   const projectData: projectDataType[] = [
     {
       name: "The Library",
-      image: "/images/projectImages/thebook.gif",
+      image: bookgif,
       github: "https://github.com/unstoppable-tanmay/Library",
       link: "https://the-books.netlify.app/",
       stack: ["React", "Express", "PostgreSQL"],
@@ -55,9 +58,7 @@ const Projects = () => {
     },
     {
       name: "Cymetics",
-      image:
-        "https://private-user-images.githubusercontent.com/85018447/285945023-c509aca1-5893-4216-8548-dd9b8a5d4277.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDcyMTY2NTMsIm5iZiI6MTcwNzIxNjM1MywicGF0aCI6Ii84NTAxODQ0Ny8yODU5NDUwMjMtYzUwOWFjYTEtNTg5My00MjE2LTg1NDgtZGQ5YjhhNWQ0Mjc3LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAyMDYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMjA2VDEwNDU1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVhMmU1NDBlOTQwMzJlNjUzOGIxY2U3MjkxNGU0M2QyMjYwZmM1MzVlNDY2OWM0M2ZmNDk4MmFlNzM4ZjI5MWQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.kANqR1qIeA1oPq8n-zJO-QghPJqt2g4qC75RN0_AnhY",
-      github: "https://github.com/unstoppable-tanmay/Cymatics",
+      image: cyameticsgif,
       stack: ["Flutter", "Provider"],
       size: "w-[30vw] md:w-[15vw] h-[31vh] md:h-[50vh]",
       position: "left-[67vw] md:left-[65vw] top-[36.5vh] md:top-[37vh]",
