@@ -261,12 +261,12 @@ const Projects = () => {
                         </div>
                       </div>
                       <Image
+                        unoptimized={true}
                         src={project.image}
                         alt=""
                         className="w-full h-full object-cover"
                         fill
                         blurDataURL="/fallback.png"
-                        loading="lazy"
                       />
                     </div>
                   </div>
