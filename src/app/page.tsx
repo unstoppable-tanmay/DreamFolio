@@ -8,13 +8,13 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import { Cursor } from "react-creative-cursor";
 import "react-creative-cursor/dist/styles.css";
 import { useRouter } from "next/navigation";
-import Gyroscope from "@/components/Gyroscope/Gyroscope";
+import Gyroscope from "@/components/CommonComponents/Gyroscope/Gyroscope";
 
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(true);
-  const [isloading, setIsloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const lenis = useLenis(({ scroll }) => {});
@@ -31,7 +31,7 @@ export default function Home() {
 
   const runLoading = async () => {
     await delay(800);
-    setIsloading(true);
+    setIsLoading(true);
   };
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <>
-      {isloading ? (
+      {isLoading ? (
         isMobile ? (
           <Cursor
             isGelly={true}
@@ -49,6 +49,7 @@ export default function Home() {
             exclusionBackgroundColor="#000"
             cursorInnerColor="#000"
             colorAnimationDuration={0.5}
+            sizeAnimationDuration={1}
           />
         ) : (
           <Gyroscope />

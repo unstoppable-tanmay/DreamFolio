@@ -29,7 +29,7 @@
 
 .card {
   /* background: #fff url("https://images.unsplash.com/photo-1441716844725-09cedc13a4e7?fit=crop&fm=jpg&h=950&q=80&w=1925") 50% 50%; */
-  background: #fff url("../../../public/images/unstoppable.webp") 50% 50%;
+  background: #fff url("../../../../public/images/unstoppable.webp") 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
   /* background-size: 300%; */

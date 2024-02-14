@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-hook/window-size": "^3.1.1",
     "@studio-freight/react-lenis": "^0.0.36",
+    "@types/matter-js": "^0.19.6",
     "@types/node": "20.4.9",
     "@types/react": "18.2.19",
     "@types/react-dom": "18.2.7",
@@ -19,6 +20,7 @@
     "eslint-config-next": "13.4.13",
     "framer-motion": "^10.16.4",
     "gsap": "^3.12.2",
+    "matter-js": "^0.19.0",
     "next": "13.4.13",
     "postcss": "8.4.27",
     "react": "18.2.0",
