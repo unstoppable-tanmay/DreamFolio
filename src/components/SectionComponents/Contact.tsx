@@ -17,7 +17,7 @@ const Contact = () => {
           className="qr relative w-[300px] aspect-square max-w-[70vw] opacity-90 overflow-hidden"
         >
           <a
-            href="https://unstoppable-tanmay.github.io/resume"
+            href="https://drive.google.com/file/d/1dy-zDv2TaTxOOM1U92-84GfQ1b-gt6m2/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
           >
